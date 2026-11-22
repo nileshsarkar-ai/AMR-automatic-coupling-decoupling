@@ -1,0 +1,77 @@
+{
+  "coupled": {
+    "solids": 30,
+    "valid": true,
+    "volume_mm3": 396071.77
+  },
+  "released": {
+    "solids": 30,
+    "valid": true,
+    "volume_mm3": 396553.05
+  },
+  "turntable": {
+    "frames": 180,
+    "duration_s": 6.0,
+    "fps": 30.0,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  "operation": {
+    "frames": 300,
+    "duration_s": 10.0,
+    "fps": 30.0,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  "payload_profiles": [
+    "light_10kg",
+    "standard_50kg",
+    "heavy_150kg"
+  ],
+  "files": [
+    "outputs\\v1\\amr_coupler_v1_360.mp4",
+    "outputs\\v1\\amr_coupler_v1_amr_operation.mp4",
+    "outputs\\v1\\amr_coupler_v1_coupled.step",
+    "outputs\\v1\\amr_coupler_v1_coupled.stl",
+    "outputs\\v1\\amr_coupler_v1_operation_contact_sheet.jpg",
+    "outputs\\v1\\amr_coupler_v1_preview.png",
+    "outputs\\v1\\amr_coupler_v1_released.step",
+    "outputs\\v1\\amr_coupler_v1_released.stl",
+    "outputs\\v1\\manifest_v1.json",
+    "outputs\\v1\\parts\\base.stl",
+    "outputs\\v1\\parts\\energy_bumper_left.stl",
+    "outputs\\v1\\parts\\energy_bumper_right.stl",
+    "outputs\\v1\\parts\\fixed_load_socket.stl",
+    "outputs\\v1\\parts\\guide_left.stl",
+    "outputs\\v1\\parts\\guide_right.stl",
+    "outputs\\v1\\parts\\isolation_front_left.stl",
+    "outputs\\v1\\parts\\isolation_front_right.stl",
+    "outputs\\v1\\parts\\isolation_rear_left.stl",
+    "outputs\\v1\\parts\\isolation_rear_right.stl",
+    "outputs\\v1\\parts\\jaw_left.stl",
+    "outputs\\v1\\parts\\jaw_right.stl",
+    "outputs\\v1\\parts\\jaw_roller_left.stl",
+    "outputs\\v1\\parts\\jaw_roller_right.stl",
+    "outputs\\v1\\parts\\linear_actuator.stl",
+    "outputs\\v1\\parts\\link_guard_left.stl",
+    "outputs\\v1\\parts\\link_guard_right.stl",
+    "outputs\\v1\\parts\\link_left.stl",
+    "outputs\\v1\\parts\\link_right.stl",
+    "outputs\\v1\\parts\\pin_sensor.stl",
+    "outputs\\v1\\parts\\pivot_left.stl",
+    "outputs\\v1\\parts\\pivot_right.stl",
+    "outputs\\v1\\parts\\release_sensor.stl",
+    "outputs\\v1\\parts\\release_yoke.stl",
+    "outputs\\v1\\parts\\spring_left.stl",
+    "outputs\\v1\\parts\\spring_right.stl",
+    "outputs\\v1\\parts\\striker_arm.stl",
+    "outputs\\v1\\parts\\top_cover.stl",
+    "outputs\\v1\\parts\\wear_insert_left.stl",
+    "outputs\\v1\\parts\\wear_insert_right.stl",
+    "outputs\\v1\\validation_report_v1.json"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "release_name": "V1",
+  "units": "mm",
+  "part_count": 30,
+  "payload_profiles": {
+    "light_10kg": {
+      "payload_kg": 10,
+      "tow_design_N": 80,
+      "proof_N": 400,
+      "approach_mm_s": 70,
+      "actuator_N": 80,
+      "nominal_pin_double_shear_MPa": 0.99,
+      "nominal_socket_bearing_MPa": 1.39,
+      "last_50mm_approach_time_s": 0.71
+    },
+    "standard_50kg": {
+      "payload_kg": 50,
+      "tow_design_N": 250,
+      "proof_N": 1250,
+      "approach_mm_s": 55,
+      "actuator_N": 120,
+      "nominal_pin_double_shear_MPa": 3.11,
+      "nominal_socket_bearing_MPa": 4.34,
+      "last_50mm_approach_time_s": 0.91
+    },
+    "heavy_150kg": {
+      "payload_kg": 150,
+      "tow_design_N": 600,
+      "proof_N": 3000,
+      "approach_mm_s": 35,
+      "actuator_N": 180,
+      "nominal_pin_double_shear_MPa": 7.46,
+      "nominal_socket_bearing_MPa": 10.42,
+      "last_50mm_approach_time_s": 1.43
+    }
+  },
+  "wear_reduction": [
+    "replaceable UHMW-PE guide inserts",
+    "rolling jaw cam followers",
+    "elastomer over-travel bumpers",
+    "replaceable isolation bushings",
+    "debris drain slot"
+  ],
+  "cycle_optimization": [
+    "passive capture requires no actuator stroke",
+    "dual-state sensing permits immediate lock confirmation",
+    "release-only actuator is outside tow load path",
+    "profile-specific final approach speed"
+  ],
+  "safety_note": "Profiles are engineering inputs, not certified payload ratings. Validate full trolley mass, floor slope, caster shock, fatigue, welds, fasteners, spring life and controls."
+}

@@ -13,11 +13,14 @@ for name in ('coupled','released'):
     assert all(s.isValid() and s.Volume()>0 for s in solids)
     results[name]={'solids':len(solids),'valid':True,'volume_mm3':round(sum(s.Volume() for s in solids),2)}
 
-vid=OUT/'amr_coupler_v2_360.mp4'; rd=imageio.get_reader(vid); meta=rd.get_meta_data()
-frames=rd.count_frames(); rd.close()
-assert frames==180, frames
-assert round(meta['duration'],1)==6.0, meta
-results['video']={'frames':frames,'fps':meta['fps'],'duration_s':meta['duration'],'size':meta['size']}
+for key,file,expected in (
+    ('turntable_video','amr_coupler_v2_360.mp4',180),
+    ('mechanism_video','amr_coupler_v2_auto_sequence.mp4',210),
+):
+    rd=imageio.get_reader(OUT/file); meta=rd.get_meta_data(); frames=rd.count_frames(); rd.close()
+    assert frames==expected, (file,frames)
+    assert meta['fps']==30.0 and meta['size']==(1280,720), meta
+    results[key]={'frames':frames,'fps':meta['fps'],'duration_s':meta['duration'],'size':meta['size']}
 results['files_checked']=sorted(str(p.relative_to(ROOT)) for p in OUT.rglob('*') if p.is_file())
 (OUT/'validation_report.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
 print(json.dumps(results,indent=2))

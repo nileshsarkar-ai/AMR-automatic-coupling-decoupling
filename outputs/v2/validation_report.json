@@ -1,0 +1,48 @@
+{
+  "coupled": {
+    "solids": 18,
+    "valid": true,
+    "volume_mm3": 351714.45
+  },
+  "released": {
+    "solids": 18,
+    "valid": true,
+    "volume_mm3": 352195.73
+  },
+  "video": {
+    "frames": 180,
+    "fps": 30.0,
+    "duration_s": 6.0,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  "files_checked": [
+    "outputs\\v2\\amr_coupler_v2_360.mp4",
+    "outputs\\v2\\amr_coupler_v2_coupled.step",
+    "outputs\\v2\\amr_coupler_v2_coupled.stl",
+    "outputs\\v2\\amr_coupler_v2_preview.png",
+    "outputs\\v2\\amr_coupler_v2_released.step",
+    "outputs\\v2\\amr_coupler_v2_released.stl",
+    "outputs\\v2\\manifest_v2.json",
+    "outputs\\v2\\parts\\base.stl",
+    "outputs\\v2\\parts\\fixed_load_socket.stl",
+    "outputs\\v2\\parts\\guide_left.stl",
+    "outputs\\v2\\parts\\guide_right.stl",
+    "outputs\\v2\\parts\\jaw_left.stl",
+    "outputs\\v2\\parts\\jaw_right.stl",
+    "outputs\\v2\\parts\\linear_actuator.stl",
+    "outputs\\v2\\parts\\link_left.stl",
+    "outputs\\v2\\parts\\link_right.stl",
+    "outputs\\v2\\parts\\pin_sensor.stl",
+    "outputs\\v2\\parts\\pivot_left.stl",
+    "outputs\\v2\\parts\\pivot_right.stl",
+    "outputs\\v2\\parts\\release_sensor.stl",
+    "outputs\\v2\\parts\\release_yoke.stl",
+    "outputs\\v2\\parts\\spring_left.stl",
+    "outputs\\v2\\parts\\spring_right.stl",
+    "outputs\\v2\\parts\\striker_arm.stl",
+    "outputs\\v2\\parts\\top_cover.stl"
+  ]
+}

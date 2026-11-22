@@ -1,0 +1,53 @@
+{
+  "version": "2.0",
+  "units": "mm",
+  "parameters": {
+    "base_l": 145.0,
+    "base_w": 110.0,
+    "base_t": 10.0,
+    "cover_t": 5.0,
+    "striker_d": 16.0,
+    "neck_d": 12.0,
+    "head_d": 24.0,
+    "pin_h": 52.0,
+    "jaw_t": 8.0,
+    "pivot_d": 10.0,
+    "mount_d": 8.5,
+    "guide_mouth": 82.0,
+    "guide_throat": 30.0,
+    "working_load_N": 300.0,
+    "proof_load_N": 1500.0
+  },
+  "architecture": "Dual spring-closed cam jaws retain a grooved striker; fixed socket carries tow load; actuator pulls a release-only yoke.",
+  "states": [
+    "coupled",
+    "released"
+  ],
+  "part_count": 18,
+  "screening_checks": {
+    "proof_load_N": 1500.0,
+    "pin_double_shear_MPa": 3.73,
+    "socket_bearing_MPa": 5.21,
+    "warning": "Screening arithmetic only. Validate actual material, fasteners, welds, fatigue, impact and geometry with FEA and physical proof testing."
+  },
+  "volumes_mm3": {
+    "base": 153655.6,
+    "guide_left": 11340.0,
+    "guide_right": 11340.0,
+    "fixed_load_socket": 17365.96,
+    "jaw_left": 4111.98,
+    "jaw_right": 4111.98,
+    "pivot_left": 1963.5,
+    "pivot_right": 1963.5,
+    "release_yoke": 6237.91,
+    "link_left": 332.94,
+    "link_right": 332.94,
+    "spring_left": 394.78,
+    "spring_right": 394.78,
+    "linear_actuator": 37222.21,
+    "pin_sensor": 3178.19,
+    "release_sensor": 2105.06,
+    "top_cover": 42637.8,
+    "striker_arm": 53025.32
+  }
+}

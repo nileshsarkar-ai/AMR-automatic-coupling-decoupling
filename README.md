@@ -2,6 +2,47 @@
 
 Parametric CAD for a compact AMR-to-trolley automatic coupling. V1 uses a fixed structural load socket, dual spring-closed helmet-style retention jaws, a release-only linear actuator, independent pin/release sensing, replaceable wear inserts, rolling cam followers and payload profiles.
 
+## Start here — primary project files
+
+### Videos
+
+- [Working AMR coupling and decoupling demonstration](outputs/v1/amr_coupler_v1_amr_operation.mp4)
+- [Moving 360-degree mechanism demonstration](outputs/v1/amr_coupler_v1_360.mp4)
+
+### Labeled photos
+
+- [Coupler assembly with major parts labeled](outputs/v1/AMR_Coupler_V1_Labeled_Assembly.png)
+- [Complete labeled 30-part catalog](outputs/v1/AMR_Coupler_V1_Labeled_Parts_Catalog.png)
+- [Coupler installed on the AMR and loaded trolley](outputs/v1/AMR_Coupler_V1_Labeled_AMR_System.png)
+
+### Documents and reports
+
+- [V1 specification sheet (PDF)](outputs/v1/AMR_Coupler_V1_Specification.pdf)
+- [Engineering optimization notes](docs/V1_ENGINEERING_OPTIMIZATION.md)
+- [Preliminary patent and design-around review](docs/PATENT_DESIGN_AROUND_REVIEW.md)
+- [Clearance audit results](outputs/v1/clearance_audit_v1.json)
+- [Validation report](outputs/v1/validation_report_v1.json)
+- [V1 build manifest](outputs/v1/manifest_v1.json)
+
+### CAD files
+
+- [Coupled assembly — STEP](outputs/v1/amr_coupler_v1_coupled.step)
+- [Released assembly — STEP](outputs/v1/amr_coupler_v1_released.step)
+- [Coupled assembly — STL](outputs/v1/amr_coupler_v1_coupled.stl)
+- [Released assembly — STL](outputs/v1/amr_coupler_v1_released.stl)
+- [All 30 individual component STL files](outputs/v1/parts)
+- [Complete downloadable V1 package](outputs/AMR_Automatic_Coupler_V1_Complete.zip)
+
+### Source scripts
+
+- [Parametric CAD generator](src/build_amr_coupler_v1.py)
+- [Working AMR demonstration renderer](src/render_v1_professional_demo.py)
+- [Moving 360-degree renderer](src/render_v1_moving_360.py)
+- [Labeled photo generator](src/create_v1_labeled_photos.py)
+- [Specification-sheet generator](src/create_v1_spec_sheet.py)
+- [Clearance audit](src/audit_v1_clearances.py)
+- [V1 validator](src/validate_v1.py)
+
 ## Build
 
 ```powershell
@@ -20,13 +61,6 @@ Outputs are written under `outputs/v1/`, including coupled and released STEP/STL
 `clearance_audit_v1.json` records the repeatable coupled/released interference check. The audited functional pairs have zero unintended solid overlap; intended pivot, clevis and fastener contacts are explicitly excluded and must be detailed during production engineering.
 
 The professional operation video shows a warehouse approach, then a cutaway with the actual striker, jaws, moving links, yoke, actuator rod and lock sensor. It zooms out to the AMR towing a loaded trolley and finishes with parking, powered release and physical separation. The moving 360-degree video rotates around the mechanism during a complete release-and-recapture cycle. These are kinematic engineering demonstrations; final spring rates, actuator stroke/force and control timing must be established by test.
-
-## Videos
-
-GitHub may not show an inline preview because the MP4 files are approximately 8-10 MB. Use these direct links to open or download them:
-
-- [Working AMR coupling and decoupling demonstration](outputs/v1/amr_coupler_v1_amr_operation.mp4)
-- [Moving 360-degree coupling, release and recapture demonstration](outputs/v1/amr_coupler_v1_360.mp4)
 
 ## Labeled images
 

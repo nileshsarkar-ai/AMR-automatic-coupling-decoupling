@@ -15,6 +15,8 @@ for key,file,count in [('moving_360','amr_coupler_v1_360.mp4',240),('operation',
     result[key]={'frames':n,'duration_s':m['duration'],'fps':m['fps'],'size':m['size']}
 manifest=json.loads((OUT/'manifest_v1.json').read_text(encoding='utf-8')); assert manifest['version']=='1.0' and len(manifest['payload_profiles'])==3
 result['payload_profiles']=list(manifest['payload_profiles'])
+clearance=json.loads((OUT/'clearance_audit_v1.json').read_text(encoding='utf-8')); assert clearance['pass']
+result['clearance_audit']={'pass':True,'states':{k:v['pass'] for k,v in clearance['states'].items()}}
 pdf=PdfReader(str(OUT/'AMR_Coupler_V1_Specification.pdf')); assert len(pdf.pages)==3
 result['specification_pdf']={'pages':len(pdf.pages),'extractable_text_chars':sum(len(p.extract_text() or '') for p in pdf.pages)}
 legacy={'amr_coupler_v1_professional_working_demo.mp4'}

@@ -1,0 +1,165 @@
+{
+  "units": "mm",
+  "states": {
+    "coupled": {
+      "pass": true,
+      "pairs": {
+        "jaw_left__striker_arm": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 0.4,
+          "minimum_mm": 0.35,
+          "pass": true
+        },
+        "jaw_right__striker_arm": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 0.4,
+          "minimum_mm": 0.35,
+          "pass": true
+        },
+        "jaw_left__fixed_socket": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 1.0,
+          "minimum_mm": 0.9,
+          "pass": true
+        },
+        "jaw_right__fixed_socket": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 1.0,
+          "minimum_mm": 0.9,
+          "pass": true
+        },
+        "jaw_left__base": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.0,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "jaw_right__base": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.0,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "jaw_left__jaw_right": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 7.99,
+          "minimum_mm": 7.0,
+          "pass": true
+        },
+        "striker_arm__fixed_socket": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 0.5,
+          "minimum_mm": 0.45,
+          "pass": true
+        },
+        "striker_arm__base": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 0.5,
+          "minimum_mm": 0.45,
+          "pass": true
+        },
+        "striker_arm__guide_left": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.17,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "striker_arm__guide_right": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.17,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "top_cover__striker_arm": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 5.0,
+          "minimum_mm": 4.5,
+          "pass": true
+        }
+      }
+    },
+    "released": {
+      "pass": true,
+      "pairs": {
+        "jaw_left__striker_arm": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 9.279,
+          "minimum_mm": 9.0,
+          "pass": true
+        },
+        "jaw_right__striker_arm": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 9.279,
+          "minimum_mm": 9.0,
+          "pass": true
+        },
+        "jaw_left__fixed_socket": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 1.0,
+          "minimum_mm": 0.9,
+          "pass": true
+        },
+        "jaw_right__fixed_socket": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 1.0,
+          "minimum_mm": 0.9,
+          "pass": true
+        },
+        "jaw_left__base": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.0,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "jaw_right__base": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.0,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "jaw_left__jaw_right": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 23.103,
+          "minimum_mm": 20.0,
+          "pass": true
+        },
+        "striker_arm__fixed_socket": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 0.5,
+          "minimum_mm": 0.45,
+          "pass": true
+        },
+        "striker_arm__base": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 0.5,
+          "minimum_mm": 0.45,
+          "pass": true
+        },
+        "striker_arm__guide_left": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.17,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "striker_arm__guide_right": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 11.17,
+          "minimum_mm": 0.0,
+          "pass": true
+        },
+        "top_cover__striker_arm": {
+          "overlap_mm3": 0.0,
+          "clearance_mm": 5.0,
+          "minimum_mm": 4.5,
+          "pass": true
+        }
+      }
+    }
+  },
+  "excluded_contacts": [
+    "link-to-jaw pivot joints",
+    "yoke-to-actuator clevis",
+    "mounting fasteners and bushings"
+  ],
+  "pass": true
+}

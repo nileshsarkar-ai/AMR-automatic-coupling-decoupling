@@ -25,7 +25,7 @@ def rot(p,piv,deg):
 ren=vtk.vtkRenderer(); ren.SetGradientBackground(True); ren.SetBackground(.66,.76,.84); ren.SetBackground2(.96,.97,.98); win=vtk.vtkRenderWindow(); win.SetOffScreenRendering(1); win.SetSize(W,H); win.SetMultiSamples(8); win.AddRenderer(ren)
 parts={}
 for n,c in COL.items(): parts[n]=load(n,c); ren.AddActor(parts[n])
-parts['top_cover'].GetProperty().SetOpacity(.15); parts['link_guard_left'].GetProperty().SetOpacity(.25); parts['link_guard_right'].GetProperty().SetOpacity(.25)
+parts['top_cover'].GetProperty().SetOpacity(.15); parts['link_guard_left'].GetProperty().SetOpacity(.25); parts['link_guard_right'].GetProperty().SetOpacity(.25); parts['striker_arm'].GetProperty().SetOpacity(.28)
 ren.AddActor(cube((0,0,-7),(360,260,10),(.52,.54,.55)))
 body=cube((-73,0,26),(36,34,28),(.08,.22,.38)); rod=cyl((-47,0,26),4,22,(.84,.86,.88)); clevis=cube((-36,0,26),(9,20,18),(.30,.35,.39)); ren.AddActor(body); ren.AddActor(rod); ren.AddActor(clevis)
 links=[]; cam=ren.GetActiveCamera(); cam.SetFocalPoint(-5,0,22); cam.SetPosition(220,-260,175); cam.SetViewUp(0,0,1)
@@ -33,7 +33,7 @@ title=vtk.vtkTextActor(); title.SetPosition(58,1005); title.GetTextProperty().Se
 sub=vtk.vtkTextActor(); sub.SetPosition(60,60); sub.GetTextProperty().SetFontSize(23); sub.GetTextProperty().SetColor(.03,.12,.20); sub.GetTextProperty().SetBackgroundColor(.96,.97,.98); sub.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(sub)
 
 def jaw(n,rn,sign,q):
- piv=(-22,sign*21,0); t=vtk.vtkTransform(); t.PostMultiply(); t.Translate(-piv[0],-piv[1],0); t.RotateZ(-sign*24*q); t.Translate(*piv); parts[n].SetUserTransform(t); parts[rn].SetUserTransform(t)
+ piv=(-22,sign*21,0); t=vtk.vtkTransform(); t.PostMultiply(); t.Translate(-piv[0],-piv[1],0); t.RotateZ(sign*24*q); t.Translate(*piv); parts[n].SetUserTransform(t); parts[rn].SetUserTransform(t)
 def grab():
  win.Render(); c=vtk.vtkWindowToImageFilter(); c.SetInput(win); c.ReadFrontBufferOff(); c.Update(); a=vtk_to_numpy(c.GetOutput().GetPointData().GetScalars()).reshape(H,W,-1); return np.flipud(a[:,:,:3])
 
@@ -51,7 +51,7 @@ with imageio.get_writer(OUT/'amr_coupler_v1_360.mp4',fps=30,codec='libx264',qual
   parts['striker_arm'].SetPosition(pinx,0,0); jaw('jaw_left','jaw_roller_left',1,q); jaw('jaw_right','jaw_roller_right',-1,q); parts['release_yoke'].SetPosition(-11*q,0,0); rod.SetPosition(-7*q,0,0); clevis.SetPosition(-11*q,0,0)
   yx=-37-11*q
   for sign in (1,-1):
-   tail=rot((-27,sign*22,19),(-22,sign*21,19),-sign*24*q); a=between((yx,sign*25,19),tail,3.2,(.22,.60,.92)); links.append(a); ren.AddActor(a)
+   tail=rot((-27,sign*22,25),(-22,sign*21,25),sign*24*q); a=between((yx,sign*25,25),tail,3.2,(.22,.60,.92)); links.append(a); ren.AddActor(a)
   parts['pin_sensor'].GetProperty().SetColor(*((.08,.82,.25) if i<45 or i>=225 else (.86,.12,.08)))
   cam.Azimuth(1.5); ren.ResetCameraClippingRange(); wr.append_data(grab())
 print(OUT/'amr_coupler_v1_360.mp4')

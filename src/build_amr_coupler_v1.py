@@ -24,11 +24,11 @@ def wear_insert(sign):
 
 def jaw_roller(sign):
     # Hardened rolling cam makes striker entry rolling rather than sliding contact.
-    return cyl(12,sign*8,14,8,10).cut(cyl(12,sign*8,13,3,12))
+    return cyl(12,sign*8,20,8,10).cut(cyl(12,sign*8,19,3,12))
 
 def energy_bumper(sign):
     # Elastomer bumper limits jaw over-travel and absorbs capture impact.
-    return box(-8,sign*27,14,16,6,10).edges('|Z').fillet(2)
+    return box(-8,sign*27,20,16,6,10).edges('|Z').fillet(2)
 
 def isolation_bushing(x,y):
     # Replaceable elastomer sleeve for limited high-frequency shock isolation.

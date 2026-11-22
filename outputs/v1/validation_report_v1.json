@@ -2,12 +2,12 @@
   "coupled": {
     "solids": 30,
     "valid": true,
-    "volume_mm3": 396071.77
+    "volume_mm3": 386871.88
   },
   "released": {
     "solids": 30,
     "valid": true,
-    "volume_mm3": 396553.05
+    "volume_mm3": 387353.15
   },
   "moving_360": {
     "frames": 240,
@@ -32,9 +32,16 @@
     "standard_50kg",
     "heavy_150kg"
   ],
+  "clearance_audit": {
+    "pass": true,
+    "states": {
+      "coupled": true,
+      "released": true
+    }
+  },
   "specification_pdf": {
     "pages": 3,
-    "extractable_text_chars": 5348
+    "extractable_text_chars": 5708
   },
   "files": [
     "outputs\\v1\\AMR_Coupler_V1_Specification.pdf",
@@ -48,6 +55,7 @@
     "outputs\\v1\\amr_coupler_v1_professional_contact_sheet.jpg",
     "outputs\\v1\\amr_coupler_v1_released.step",
     "outputs\\v1\\amr_coupler_v1_released.stl",
+    "outputs\\v1\\clearance_audit_v1.json",
     "outputs\\v1\\manifest_v1.json",
     "outputs\\v1\\parts\\base.stl",
     "outputs\\v1\\parts\\energy_bumper_left.stl",

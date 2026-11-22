@@ -110,7 +110,7 @@ def rotpt(p,pivot,deg):
 
 def set_jaw(actor_name,roller_name,sign,ang,rx):
     # Match CAD opening direction and move roller rigidly with the jaw.
-    pivot=(-22,sign*21,0); deg=-sign*ang
+    pivot=(-22,sign*21,0); deg=sign*ang
     t=vtk.vtkTransform(); t.PostMultiply(); t.Translate(-pivot[0],-pivot[1],0); t.RotateZ(deg); t.Translate(pivot[0]+rx,pivot[1],0)
     parts[actor_name].SetUserTransform(t); parts[roller_name].SetUserTransform(t)
 
@@ -119,8 +119,8 @@ def update_links(rx,open_q):
     for a in dynamic_links: ren.RemoveActor(a)
     dynamic_links=[]; yoke_x=-37-11*open_q
     for sign in (1,-1):
-        tail=rotpt((-27,sign*22,19),(-22,sign*21,19),-sign*24*open_q); tail=(tail[0]+rx,tail[1],tail[2])
-        yp=(yoke_x+rx,sign*25,19); a=actor_between(yp,tail,3.2,(.22,.60,.92)); dynamic_links.append(a); ren.AddActor(a)
+        tail=rotpt((-27,sign*22,25),(-22,sign*21,25),sign*24*open_q); tail=(tail[0]+rx,tail[1],tail[2])
+        yp=(yoke_x+rx,sign*25,25); a=actor_between(yp,tail,3.2,(.22,.60,.92)); dynamic_links.append(a); ren.AddActor(a)
 
 def group_position(group,x):
     for a in group: a.SetPosition(x,0,0)
@@ -154,6 +154,7 @@ with imageio.get_writer(VIDEO,fps=FPS,codec='libx264',quality=9,output_params=['
     group_position(amr,rx); group_position(receiver,rx); group_position(trolley,tx); parts['striker_arm'].SetPosition(tx,0,0)
     for a in amr: a.GetProperty().SetOpacity(body_alpha)
     for n in ('top_cover','link_guard_left','link_guard_right'): parts[n].GetProperty().SetOpacity(.12 if body_alpha<.5 else (.18 if n=='top_cover' else .34))
+    parts['striker_arm'].GetProperty().SetOpacity(.28 if body_alpha<.5 else 1.0)
     # Coherent latch, yoke, links and actuator rod motion.
     set_jaw('jaw_left','jaw_roller_left',1,24*open_q,rx); set_jaw('jaw_right','jaw_roller_right',-1,24*open_q,rx)
     parts['release_yoke'].SetPosition(rx-11*open_q,0,0); update_links(rx,open_q)

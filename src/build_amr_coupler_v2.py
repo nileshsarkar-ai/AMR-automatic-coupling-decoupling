@@ -26,6 +26,7 @@ def base():
     s=box(-95,-55,0,P['base_l'],P['base_w'],P['base_t']).edges('|Z').fillet(5)
     for x in (-82,35):
         for y in (-42,42): s=s.cut(cyl(x,y,-1,P['mount_d'],P['base_t']+2))
+    s=s.cut(cyl(10,0,-1,P['striker_d']+1.0,P['base_t']+2))
     # Drain/debris slots prevent the pin pocket from becoming a dirt trap.
     s=s.cut(box(2,-4,-1,42,8,P['base_t']+2))
     return s
@@ -38,20 +39,20 @@ def guide(sign):
 
 def fixed_socket():
     # Structural towing loads enter this fixed steel block; latch jaws only retain the pin.
-    s=box(-8,-25,10,24,50,18).edges('|Z').fillet(4)
-    s=s.cut(cyl(10,0,9,P['striker_d']+1.0,20))
-    s=s.cut(box(10,-9,9,16,18,20))
+    s=box(-8,-25,10,24,50,10).edges('|Z').fillet(4)
+    s=s.cut(cyl(10,0,9,P['striker_d']+1.0,12))
+    s=s.cut(box(10,-9,9,16,18,12))
     return s
 
 def jaw(sign, opened=False):
     # Symmetric helmet-style pawls. Pin cams both outward during capture.
     pts=[(-28,sign*27),(-5,sign*25),(15,sign*10),(15,sign*2),(-2,sign*7),(-34,sign*16)]
-    j=cq.Workplane('XY').polyline(pts).close().extrude(P['jaw_t']).translate((0,0,15))
-    j=j.cut(cyl(-22,sign*21,14,P['pivot_d']+0.4,P['jaw_t']+2))
-    j=j.cut(cyl(10,0,14,P['neck_d']+0.8,P['jaw_t']+2))
-    j=j.cut(cyl(-27,sign*22,14,5.2,P['jaw_t']+2))
+    j=cq.Workplane('XY').polyline(pts).close().extrude(P['jaw_t']).translate((0,0,21))
+    j=j.cut(cyl(-22,sign*21,20,P['pivot_d']+0.4,P['jaw_t']+2))
+    j=j.cut(cyl(10,0,20,P['neck_d']+0.8,P['jaw_t']+2))
+    j=j.cut(cyl(-27,sign*22,20,5.2,P['jaw_t']+2))
     if opened:
-        angle=-sign*24
+        angle=sign*24
         j=j.rotate((-22,sign*21,0),(-22,sign*21,1),angle)
     return j
 
@@ -59,8 +60,8 @@ def pivot(sign): return cyl(-22,sign*21,10,P['pivot_d'],25)
 
 def release_yoke(opened=False):
     x=-53 if opened else -42
-    y=box(x,-34,14,10,68,10).edges('|Z').fillet(4)
-    for yy in (-25,25): y=y.cut(cyl(x+5,yy,13,5.2,12))
+    y=box(x,-34,20,10,68,10).edges('|Z').fillet(4)
+    for yy in (-25,25): y=y.cut(cyl(x+5,yy,19,5.2,12))
     return y
 
 def actuator(opened=False):
@@ -76,8 +77,8 @@ def link(sign, opened=False):
     x0=-48 if opened else -37; y0=sign*25
     x1=-27; y1=sign*22
     dx,dy=x1-x0,y1-y0; L=(dx*dx+dy*dy)**0.5; a=math.degrees(math.atan2(dy,dx))
-    l=box(0,-4,16,L,8,6).edges('|Z').fillet(3)
-    for xx in (0,L): l=l.cut(cyl(xx,0,15,5.2,8))
+    l=box(0,-4,22,L,8,6).edges('|Z').fillet(3)
+    for xx in (0,L): l=l.cut(cyl(xx,0,21,5.2,8))
     return l.rotate((0,0,0),(0,0,1),a).translate((x0,y0,0))
 
 def spring(sign):
@@ -85,7 +86,7 @@ def spring(sign):
     path=cq.Wire.makeHelix(3.2,20,5)
     prof=cq.Workplane('XZ').center(5,0).circle(0.8)
     s=prof.sweep(path)
-    return s.rotate((0,0,0),(0,1,0),90).translate((-48,sign*38,19))
+    return s.rotate((0,0,0),(0,1,0),90).translate((-48,sign*38,25))
 
 def cover():
     c=box(-92,-52,36,137,104,P['cover_t']).edges('|Z').fillet(5)
@@ -95,12 +96,12 @@ def cover():
     return c
 
 def striker():
-    arm=box(10,-16,4,115,32,12).edges('|Z').fillet(7)
-    shank=cyl(10,0,8,P['striker_d'],P['pin_h'])
-    neck=cyl(10,0,23,P['neck_d'],12)
-    head=cyl(10,0,34,P['head_d'],8).edges('>Z or <Z').chamfer(2)
-    mount=cyl(110,0,3,10.5,14)
-    return arm.union(shank).cut(cyl(10,0,23,P['striker_d']+2,12)).union(neck).union(head).cut(mount)
+    arm=box(10,-16,46,115,32,12).edges('|Z').fillet(7)
+    shank=cyl(10,0,6,P['striker_d'],52)
+    neck=cyl(10,0,20.5,P['neck_d'],9)
+    head=cyl(10,0,52,P['head_d'],8).edges('>Z or <Z').chamfer(2)
+    mount=cyl(110,0,45,10.5,14)
+    return arm.union(shank).cut(cyl(10,0,20.5,P['striker_d']+2,9)).union(neck).union(head).cut(mount)
 
 def sensor(name):
     if name=='pin': return box(19,27,12,18,10,18).edges('|X').fillet(2)

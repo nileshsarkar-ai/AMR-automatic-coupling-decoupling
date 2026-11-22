@@ -16,6 +16,8 @@ Outputs are written under `outputs/v1/`, including coupled and released STEP/STL
 
 `AMR_Coupler_V1_Specification.pdf` is the rendered three-page specification sheet covering the mechanical interface, operating sequence, payload profiles, materials, maintenance and qualification requirements.
 
+`clearance_audit_v1.json` records the repeatable coupled/released interference check. The audited functional pairs have zero unintended solid overlap; intended pivot, clevis and fastener contacts are explicitly excluded and must be detailed during production engineering.
+
 The professional operation video shows a warehouse approach, then a cutaway with the actual striker, jaws, moving links, yoke, actuator rod and lock sensor. It zooms out to the AMR towing a loaded trolley and finishes with parking, powered release and physical separation. The moving 360-degree video rotates around the mechanism during a complete release-and-recapture cycle. These are kinematic engineering demonstrations; final spring rates, actuator stroke/force and control timing must be established by test.
 
 ## Safety

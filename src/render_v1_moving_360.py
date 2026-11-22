@@ -14,7 +14,7 @@ def load(n,c):
 def cube(center,size,color):
  s=vtk.vtkCubeSource(); s.SetCenter(*center); s.SetXLength(size[0]); s.SetYLength(size[1]); s.SetZLength(size[2]); m=vtk.vtkPolyDataMapper(); m.SetInputConnection(s.GetOutputPort()); a=vtk.vtkActor(); a.SetMapper(m); a.GetProperty().SetColor(*color); return a
 def cyl(center,r,h,color,axis='y'):
- s=vtk.vtkCylinderSource(); s.SetCenter(*center); s.SetRadius(r); s.SetHeight(h); s.SetResolution(36); m=vtk.vtkPolyDataMapper(); m.SetInputConnection(s.GetOutputPort()); a=vtk.vtkActor(); a.SetMapper(m); a.GetProperty().SetColor(*color); a.RotateZ(90); return a
+ s=vtk.vtkCylinderSource(); s.SetCenter(0,0,0); s.SetRadius(r); s.SetHeight(h); s.SetResolution(36); m=vtk.vtkPolyDataMapper(); m.SetInputConnection(s.GetOutputPort()); a=vtk.vtkActor(); a.SetMapper(m); a.GetProperty().SetColor(*color); a.RotateZ(-90); a.SetPosition(*center); return a
 def between(p0,p1,r,color):
  d=np.subtract(p1,p0); L=float(np.linalg.norm(d)); mid=np.add(p0,p1)/2; s=vtk.vtkCylinderSource(); s.SetRadius(r); s.SetHeight(L); s.SetResolution(28); m=vtk.vtkPolyDataMapper(); m.SetInputConnection(s.GetOutputPort()); a=vtk.vtkActor(); a.SetMapper(m); a.GetProperty().SetColor(*color); t=vtk.vtkTransform(); t.Translate(*mid); v=d/L; y=np.array([0.,1.,0.]); ax=np.cross(y,v); dot=float(np.clip(np.dot(y,v),-1,1)); ang=math.degrees(math.acos(dot));
  if np.linalg.norm(ax)>1e-8: t.RotateWXYZ(ang,*ax)
@@ -29,8 +29,8 @@ parts['top_cover'].GetProperty().SetOpacity(.15); parts['link_guard_left'].GetPr
 ren.AddActor(cube((0,0,-7),(360,260,10),(.52,.54,.55)))
 body=cube((-73,0,26),(36,34,28),(.08,.22,.38)); rod=cyl((-47,0,26),4,22,(.84,.86,.88)); clevis=cube((-36,0,26),(9,20,18),(.30,.35,.39)); ren.AddActor(body); ren.AddActor(rod); ren.AddActor(clevis)
 links=[]; cam=ren.GetActiveCamera(); cam.SetFocalPoint(-5,0,22); cam.SetPosition(220,-260,175); cam.SetViewUp(0,0,1)
-title=vtk.vtkTextActor(); title.SetPosition(58,1005); title.GetTextProperty().SetFontSize(34); title.GetTextProperty().SetBold(True); title.GetTextProperty().SetColor(.04,.08,.12); ren.AddActor2D(title)
-sub=vtk.vtkTextActor(); sub.SetPosition(60,60); sub.GetTextProperty().SetFontSize(23); sub.GetTextProperty().SetColor(.03,.12,.20); ren.AddActor2D(sub)
+title=vtk.vtkTextActor(); title.SetPosition(58,1005); title.GetTextProperty().SetFontSize(34); title.GetTextProperty().SetBold(True); title.GetTextProperty().SetColor(.04,.08,.12); title.GetTextProperty().SetBackgroundColor(.96,.97,.98); title.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(title)
+sub=vtk.vtkTextActor(); sub.SetPosition(60,60); sub.GetTextProperty().SetFontSize(23); sub.GetTextProperty().SetColor(.03,.12,.20); sub.GetTextProperty().SetBackgroundColor(.96,.97,.98); sub.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(sub)
 
 def jaw(n,rn,sign,q):
  piv=(-22,sign*21,0); t=vtk.vtkTransform(); t.PostMultiply(); t.Translate(-piv[0],-piv[1],0); t.RotateZ(-sign*24*q); t.Translate(*piv); parts[n].SetUserTransform(t); parts[rn].SetUserTransform(t)

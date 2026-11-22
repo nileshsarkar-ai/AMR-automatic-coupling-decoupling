@@ -14,6 +14,8 @@ python .\src\validate_v1.py
 
 Outputs are written under `outputs/v1/`, including coupled and released STEP/STL assemblies, 30 individual part STLs, a 360-degree MP4, and a working AMR/payload coupling and decoupling MP4.
 
+`AMR_Coupler_V1_Specification.pdf` is the rendered three-page specification sheet covering the mechanical interface, operating sequence, payload profiles, materials, maintenance and qualification requirements.
+
 The professional operation video shows a warehouse approach, then a cutaway with the actual striker, jaws, moving links, yoke, actuator rod and lock sensor. It zooms out to the AMR towing a loaded trolley and finishes with parking, powered release and physical separation. The moving 360-degree video rotates around the mechanism during a complete release-and-recapture cycle. These are kinematic engineering demonstrations; final spring rates, actuator stroke/force and control timing must be established by test.
 
 ## Safety

@@ -28,10 +28,11 @@ def cube(center,size,color,opacity=1):
     a=vtk.vtkActor(); a.SetMapper(m); a.GetProperty().SetColor(*color); a.GetProperty().SetOpacity(opacity); a.GetProperty().SetInterpolationToPBR(); a.GetProperty().SetRoughness(.42); return a
 
 def cylinder(center,radius,height,color,axis='z'):
-    s=vtk.vtkCylinderSource(); s.SetCenter(*center); s.SetRadius(radius); s.SetHeight(height); s.SetResolution(48); m=vtk.vtkPolyDataMapper(); m.SetInputConnection(s.GetOutputPort())
+    s=vtk.vtkCylinderSource(); s.SetCenter(0,0,0); s.SetRadius(radius); s.SetHeight(height); s.SetResolution(48); m=vtk.vtkPolyDataMapper(); m.SetInputConnection(s.GetOutputPort())
     a=vtk.vtkActor(); a.SetMapper(m); a.GetProperty().SetColor(*color); a.GetProperty().SetInterpolationToPBR(); a.GetProperty().SetRoughness(.38)
-    if axis=='x': a.RotateZ(90)
-    elif axis=='y': a.RotateX(90)
+    if axis=='x': a.RotateZ(-90)
+    elif axis=='z': a.RotateX(90)
+    a.SetPosition(*center)
     return a
 
 def rounded_body(center,size,color):
@@ -97,9 +98,9 @@ dynamic_links=[]
 
 # On-screen UI.
 panel=cube((0,0,0),(1,1,1),(0,0,0)) # unused 3D placeholder keeps helper set compact
-title=vtk.vtkTextActor(); title.SetPosition(58,1000); title.GetTextProperty().SetFontSize(34); title.GetTextProperty().SetBold(True); title.GetTextProperty().SetColor(.04,.08,.12); ren.AddActor2D(title)
-subtitle=vtk.vtkTextActor(); subtitle.SetPosition(60,62); subtitle.GetTextProperty().SetFontSize(23); subtitle.GetTextProperty().SetColor(.03,.12,.20); ren.AddActor2D(subtitle)
-state=vtk.vtkTextActor(); state.SetPosition(1570,1005); state.GetTextProperty().SetFontSize(25); state.GetTextProperty().SetBold(True); ren.AddActor2D(state)
+title=vtk.vtkTextActor(); title.SetPosition(58,1000); title.GetTextProperty().SetFontSize(34); title.GetTextProperty().SetBold(True); title.GetTextProperty().SetColor(.04,.08,.12); title.GetTextProperty().SetBackgroundColor(.96,.97,.98); title.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(title)
+subtitle=vtk.vtkTextActor(); subtitle.SetPosition(60,62); subtitle.GetTextProperty().SetFontSize(23); subtitle.GetTextProperty().SetColor(.03,.12,.20); subtitle.GetTextProperty().SetBackgroundColor(.96,.97,.98); subtitle.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(subtitle)
+state=vtk.vtkTextActor(); state.SetPosition(1570,1005); state.GetTextProperty().SetFontSize(25); state.GetTextProperty().SetBold(True); state.GetTextProperty().SetBackgroundColor(.96,.97,.98); state.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(state)
 
 receiver_names=[n for n in parts if n!='striker_arm']; receiver=[parts[n] for n in receiver_names]
 cam=ren.GetActiveCamera(); cam.SetViewUp(0,0,1)
@@ -159,9 +160,6 @@ with imageio.get_writer(VIDEO,fps=FPS,codec='libx264',quality=9,output_params=['
     act_body.SetPosition(rx,0,0); act_rod.SetPosition(rx-7*open_q,0,0); act_clevis.SetPosition(rx-11*open_q,0,0)
     parts['pin_sensor'].GetProperty().SetColor(*((.08,.82,.25) if sensor_locked else (.86,.12,.08)))
     state.SetInput('STATUS: '+phase); state.GetTextProperty().SetColor(*((.04,.55,.16) if phase in ('LOCKED','READY TO TOW','TOWING','CLEAR') else (.82,.34,.03)))
-    # Wheel rotation indicates real vehicle motion.
-    wheel_angle=-(rx*1.35)%360
-    for a in amr_wheels: a.SetOrientation(90,0,wheel_angle)
     wr.append_data(grab())
 
 print(VIDEO)

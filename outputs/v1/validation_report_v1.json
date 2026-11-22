@@ -32,7 +32,12 @@
     "standard_50kg",
     "heavy_150kg"
   ],
+  "specification_pdf": {
+    "pages": 3,
+    "extractable_text_chars": 5348
+  },
   "files": [
+    "outputs\\v1\\AMR_Coupler_V1_Specification.pdf",
     "outputs\\v1\\amr_coupler_v1_360.mp4",
     "outputs\\v1\\amr_coupler_v1_amr_operation.mp4",
     "outputs\\v1\\amr_coupler_v1_coupled.step",

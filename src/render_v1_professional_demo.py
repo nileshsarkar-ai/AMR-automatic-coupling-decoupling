@@ -84,7 +84,8 @@ amr += amr_wheels
 for a in amr: ren.AddActor(a)
 
 # Trolley with tray, rails, four casters and visible payload boxes.
-trolley=[cube((205,0,66),(155,118,12),(.50,.54,.57)),cube((205,-55,86),(155,7,34),(.38,.42,.45)),cube((205,55,86),(155,7,34),(.38,.42,.45)),cube((275,0,86),(7,110,34),(.38,.42,.45))]
+trolley=[cube((205,0,66),(155,118,12),(.50,.54,.57)),cube((205,-55,86),(155,7,34),(.38,.42,.45)),cube((205,55,86),(155,7,34),(.38,.42,.45)),cube((275,0,86),(7,110,34),(.38,.42,.45)),
+         cube((130,0,45),(12,48,34),(.32,.35,.38))]
 for x in (145,265):
     for y in (-48,48):
         trolley += [cube((x,y,34),(9,9,34),(.45,.48,.50)),cylinder((x,y,14),15,9,(.05,.055,.06),'y')]
@@ -102,7 +103,11 @@ title=vtk.vtkTextActor(); title.SetPosition(58,1000); title.GetTextProperty().Se
 subtitle=vtk.vtkTextActor(); subtitle.SetPosition(60,62); subtitle.GetTextProperty().SetFontSize(23); subtitle.GetTextProperty().SetColor(.03,.12,.20); subtitle.GetTextProperty().SetBackgroundColor(.96,.97,.98); subtitle.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(subtitle)
 state=vtk.vtkTextActor(); state.SetPosition(1570,1005); state.GetTextProperty().SetFontSize(25); state.GetTextProperty().SetBold(True); state.GetTextProperty().SetBackgroundColor(.96,.97,.98); state.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(state)
 
-receiver_names=[n for n in parts if n!='striker_arm']; receiver=[parts[n] for n in receiver_names]
+# Static receiver parts translate with the AMR. The jaw/roller pairs, release
+# yoke and striker are transformed separately below and must not receive the
+# group translation a second time.
+dynamic_names={'striker_arm','jaw_left','jaw_right','jaw_roller_left','jaw_roller_right','release_yoke'}
+receiver_names=[n for n in parts if n not in dynamic_names]; receiver=[parts[n] for n in receiver_names]
 cam=ren.GetActiveCamera(); cam.SetViewUp(0,0,1)
 
 def rotpt(p,pivot,deg):

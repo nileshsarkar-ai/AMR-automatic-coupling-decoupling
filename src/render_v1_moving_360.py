@@ -26,9 +26,22 @@ ren=vtk.vtkRenderer(); ren.SetGradientBackground(True); ren.SetBackground(.66,.7
 parts={}
 for n,c in COL.items(): parts[n]=load(n,c); ren.AddActor(parts[n])
 parts['top_cover'].GetProperty().SetOpacity(.15); parts['link_guard_left'].GetProperty().SetOpacity(.25); parts['link_guard_right'].GetProperty().SetOpacity(.25); parts['striker_arm'].GetProperty().SetOpacity(.28)
-ren.AddActor(cube((0,0,-7),(360,260,10),(.52,.54,.55)))
+ren.AddActor(cube((55,0,-7),(620,340,10),(.52,.54,.55)))
+# A compact but complete trolley proxy moves rigidly with the striker. Showing
+# the tray, front plate, payload, legs and wheels prevents the separated
+# striker from reading as a floating hook during the orbit.
+trolley_side=[
+ cube((130,0,45),(12,50,38),(.30,.33,.36)),
+ cube((205,0,66),(150,110,12),(.48,.52,.55)),
+ cube((255,0,86),(8,104,34),(.34,.38,.41)),
+ cube((200,0,88),(58,52,30),(.58,.37,.16)),
+]
+for x in (160,245):
+ for y in (-46,46):
+  trolley_side.extend([cube((x,y,34),(9,9,34),(.42,.45,.48)),cyl((x,y,14),14,9,(.04,.045,.05))])
+for a in trolley_side: ren.AddActor(a)
 body=cube((-73,0,26),(36,34,28),(.08,.22,.38)); rod=cyl((-47,0,26),4,22,(.84,.86,.88)); clevis=cube((-36,0,26),(9,20,18),(.30,.35,.39)); ren.AddActor(body); ren.AddActor(rod); ren.AddActor(clevis)
-links=[]; cam=ren.GetActiveCamera(); cam.SetFocalPoint(-5,0,22); cam.SetPosition(220,-260,175); cam.SetViewUp(0,0,1)
+links=[]; cam=ren.GetActiveCamera(); cam.SetFocalPoint(55,0,35); cam.SetPosition(360,-420,250); cam.SetViewUp(0,0,1)
 title=vtk.vtkTextActor(); title.SetPosition(58,1005); title.GetTextProperty().SetFontSize(34); title.GetTextProperty().SetBold(True); title.GetTextProperty().SetColor(.04,.08,.12); title.GetTextProperty().SetBackgroundColor(.96,.97,.98); title.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(title)
 sub=vtk.vtkTextActor(); sub.SetPosition(60,60); sub.GetTextProperty().SetFontSize(23); sub.GetTextProperty().SetColor(.03,.12,.20); sub.GetTextProperty().SetBackgroundColor(.96,.97,.98); sub.GetTextProperty().SetBackgroundOpacity(.82); ren.AddActor2D(sub)
 
@@ -48,7 +61,9 @@ with imageio.get_writer(OUT/'amr_coupler_v1_360.mp4',fps=30,codec='libx264',qual
   elif i<225:
    z=(i-165)/59; pinx=75*(1-z); q=math.sin(math.pi*z); title.SetInput('AUTOMATIC RECAPTURE'); sub.SetInput('Incoming pin cams the jaws open; springs close them into the groove.')
   else: title.SetInput('LOCK CONFIRMED'); sub.SetInput('Presence sensor turns green and towing can begin.')
-  parts['striker_arm'].SetPosition(pinx,0,0); jaw('jaw_left','jaw_roller_left',1,q); jaw('jaw_right','jaw_roller_right',-1,q); parts['release_yoke'].SetPosition(-11*q,0,0); rod.SetPosition(-7*q,0,0); clevis.SetPosition(-11*q,0,0)
+  parts['striker_arm'].SetPosition(pinx,0,0)
+  for a in trolley_side: a.SetPosition(pinx,0,0)
+  jaw('jaw_left','jaw_roller_left',1,q); jaw('jaw_right','jaw_roller_right',-1,q); parts['release_yoke'].SetPosition(-11*q,0,0); rod.SetPosition(-7*q,0,0); clevis.SetPosition(-11*q,0,0)
   yx=-37-11*q
   for sign in (1,-1):
    tail=rot((-27,sign*22,25),(-22,sign*21,25),sign*24*q); a=between((yx,sign*25,25),tail,3.2,(.22,.60,.92)); links.append(a); ren.AddActor(a)

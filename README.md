@@ -21,6 +21,13 @@ Outputs are written under `outputs/v1/`, including coupled and released STEP/STL
 
 The professional operation video shows a warehouse approach, then a cutaway with the actual striker, jaws, moving links, yoke, actuator rod and lock sensor. It zooms out to the AMR towing a loaded trolley and finishes with parking, powered release and physical separation. The moving 360-degree video rotates around the mechanism during a complete release-and-recapture cycle. These are kinematic engineering demonstrations; final spring rates, actuator stroke/force and control timing must be established by test.
 
+## Videos
+
+GitHub may not show an inline preview because the MP4 files are approximately 8-10 MB. Use these direct links to open or download them:
+
+- [Working AMR coupling and decoupling demonstration](outputs/v1/amr_coupler_v1_amr_operation.mp4)
+- [Moving 360-degree coupling, release and recapture demonstration](outputs/v1/amr_coupler_v1_360.mp4)
+
 ## Labeled images
 
 ### Coupler assembly and major components

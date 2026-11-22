@@ -7,13 +7,14 @@ Parametric CAD for a compact AMR-to-trolley automatic coupling. V1 uses a fixed 
 ```powershell
 python -m pip install cadquery==2.6.1 vtk==9.3.1 imageio imageio-ffmpeg
 python .\src\build_amr_coupler_v1.py
-python .\src\render_v1.py
+python .\src\render_v1_professional_demo.py
+python .\src\render_v1_moving_360.py
 python .\src\validate_v1.py
 ```
 
 Outputs are written under `outputs/v1/`, including coupled and released STEP/STL assemblies, 30 individual part STLs, a 360-degree MP4, and a working AMR/payload coupling and decoupling MP4.
 
-The operation video starts with the actual jaw and striker movement, zooms out to the AMR towing a loaded trolley, and shows parking, powered release and physical separation. It is a kinematic engineering demonstration; final spring rates, actuator stroke/force and control timing must be established by test.
+The professional operation video shows a warehouse approach, then a cutaway with the actual striker, jaws, moving links, yoke, actuator rod and lock sensor. It zooms out to the AMR towing a loaded trolley and finishes with parking, powered release and physical separation. The moving 360-degree video rotates around the mechanism during a complete release-and-recapture cycle. These are kinematic engineering demonstrations; final spring rates, actuator stroke/force and control timing must be established by test.
 
 ## Safety
 

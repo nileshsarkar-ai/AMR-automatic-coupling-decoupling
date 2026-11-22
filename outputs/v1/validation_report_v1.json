@@ -9,22 +9,22 @@
     "valid": true,
     "volume_mm3": 396553.05
   },
-  "turntable": {
-    "frames": 180,
-    "duration_s": 6.0,
+  "moving_360": {
+    "frames": 240,
+    "duration_s": 8.0,
     "fps": 30.0,
     "size": [
-      1280,
-      720
+      1920,
+      1088
     ]
   },
   "operation": {
-    "frames": 300,
-    "duration_s": 10.0,
+    "frames": 450,
+    "duration_s": 15.0,
     "fps": 30.0,
     "size": [
-      1280,
-      720
+      1920,
+      1088
     ]
   },
   "payload_profiles": [
@@ -37,8 +37,10 @@
     "outputs\\v1\\amr_coupler_v1_amr_operation.mp4",
     "outputs\\v1\\amr_coupler_v1_coupled.step",
     "outputs\\v1\\amr_coupler_v1_coupled.stl",
+    "outputs\\v1\\amr_coupler_v1_moving_360_contact_sheet.jpg",
     "outputs\\v1\\amr_coupler_v1_operation_contact_sheet.jpg",
     "outputs\\v1\\amr_coupler_v1_preview.png",
+    "outputs\\v1\\amr_coupler_v1_professional_contact_sheet.jpg",
     "outputs\\v1\\amr_coupler_v1_released.step",
     "outputs\\v1\\amr_coupler_v1_released.stl",
     "outputs\\v1\\manifest_v1.json",
